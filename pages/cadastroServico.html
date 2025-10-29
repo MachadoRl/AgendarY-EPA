@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="../js/scripts.js" defer></script>
+    <title>AgendarY | Cadastro de serviço</title>
+</head>
+
+<body>
+    <div class="vh-100">
+        <main class="d-flex align-items-center justify-content-center vh-70 bg-login">
+            <div
+                class="primary-white p-5 rounded-4 cadastro-w border-9e d-flex flex-column justify-content-between vh-50 m-5">
+                <h1 class="text-center mb-4 primary-text-color">Cadastro de serviço</h1>
+                <form action="" class="container">
+                    <div class="row">
+                        <div class="mb-4 col-12 d-flex flex-column align-items-center">
+                            <label class="form-label fw-bold d-block text-center" for="input-foto-servico">
+                                Foto do Serviço:
+                            </label>
+                            <input class="d-none border-9e" type="file" id="input-foto-servico" accept="image/*" required>    
+                            <Label class="d-flex m-auto position-relative border border-9e overflow-hidden rounded-3"
+                                for="input-foto-servico" id="preview-label-servico"
+                                style="width: 200px; height: 140px;">
+                                <img id="preview-img-servico" class="w-100 h-100" src=""
+                                    alt="">
+                                <span id="placeholder-text-servico"
+                                    class="position-absolute top-50 start-50 translate-middle text-muted text-center">
+                                    Clique para adicionar <br>uma foto
+                                </span>
+                            </Label>
+                        </div>
+                        <label for="servico-cadastro" class="form-label fw-bold col-12 mt-3">
+                            Tipo de serviço
+                        </label>
+                        <input type="text" name="servico-cadastro" id="servico-cadastro"
+                            class="form-control form-control-lg placeholder-menor col-12" placeholder="Ex. Tatuagem"
+                            required>
+
+                        <label for="bairro-cadastro" class="form-label fw-bold col-12 mt-3">
+                            Bairro
+                        </label>
+                        <input type="text" name="bairro-cadastro" id="bairro-cadastro"
+                            class="form-control form-control-lg placeholder-menor col-12" placeholder="Ex. Nova Tatuí"
+                            required>
+
+                        <div class="row g-0 mt-3 d-flex justify-content-between">
+                            <div class="col-8">
+                                <label for="rua-cadastro" class="form-label fw-bold">Rua</label>
+                                <input type="text" name="rua-cadastro" id="rua-cadastro"
+                                    class="form-control form-control-lg placeholder-menor"
+                                    placeholder="Ex. Alameda Ari Barroso" required>
+                            </div>
+                            <div class="col-3">
+                                <label for="numero-cadastro" class="form-label fw-bold">Número</label>
+                                <input type="number" name="numero-cadastro" min="0" id="numero-cadastro"
+                                    class="form-control form-control-lg placeholder-menor" placeholder="Ex. 61"
+                                    required>
+                            </div>
+                        </div>
+
+                        <label for="descricao-cadastro" class="form-label fw-bold col-12 mt-3">
+                            Descrição do serviço
+                        </label>
+                        <textarea name="descricao-cadastro" id="descricao-cadastro" class="form-control col-12" rows="4"
+                            placeholder="Pequena descrição sobre o serviço oferecido..." maxlength="100"></textarea>
+
+                        <button type="submit" class="btn btn-gradient-sm mt-4" id="btn-cadastrar-servico"
+                            formaction="menuInicial.html">Criar
+                            Serviço</button>
+                    </div>
+                </form>
+                <span class="text-center fora-destaque mt-4">Obs. O nome da sua conta será exibido na lista de
+                    serviços.</span>
+            </div>
+        </main>
+    </div>
+    <div class="modal fade" id="meuModalAlerta" tabindex="-1" aria-labelledby="modalTitulo" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitulo">Aviso</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalCorpo">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="meuModalConfirmar" tabindex="-1" ...>
+    </div>
+    <div class="modal fade" id="meuModalConfirmar" tabindex="-1" aria-labelledby="modalConfirmarTitulo"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalConfirmarTitulo">Confirmar Ação</h5>
+                </div>
+                <div class="modal-body" id="modalConfirmarCorpo">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="btn-confirmar-acao">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="../js/scripts.js"></script>
+</body>
+
+</html>
